@@ -2,7 +2,7 @@ import React from 'react'
 import { Formik } from 'formik'
 import { TextField, Button } from '@material-ui/core'
 //
-function App() {
+function Basic() {
   return (
     <>
       <Formik
@@ -20,6 +20,7 @@ function App() {
                 name="username"
                 value={values.username}
                 onChange={handleChange}
+                placeholder="telephone"
               />
             </div>
             <div>
@@ -38,4 +39,4 @@ function App() {
     </>
   )
 }
-export default App
+export default Basic
