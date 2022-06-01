@@ -1,8 +1,11 @@
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
+import styles from '../../css/searchForm.module.css'
 
-const Autocomplete = (props: { suggestions: string[] }) => {
-  // 방향키, 엔터 입력시 값의 인덱스를 받아오기
+const SearchForm = (props: { suggestions: string[] }) => {
   const [active, setActive] = useState(0)
+  console.log(active)
   //   걸리진 문자열을 배열로 받습니다.
   const [filtered, setFiltered] = useState<string[]>([])
   //   list들이 보여져야하는지 아닌지 판별합니다.
@@ -35,11 +38,9 @@ const Autocomplete = (props: { suggestions: string[] }) => {
       setIsShow(false)
       setInput(filtered[active])
     } else if (e.keyCode === 38) {
-      // 윗 방향키 입력시
       setInput(filtered[active])
       return active === 0 ? null : setActive(active - 1)
     } else if (e.keyCode === 40) {
-      // 아랫 방향키 입력시
       setInput(filtered[active])
       return active - 1 === filtered.length ? null : setActive(active + 1)
     }
@@ -48,14 +49,18 @@ const Autocomplete = (props: { suggestions: string[] }) => {
     if (isShow && input) {
       if (filtered) {
         return (
-          <ul className="autocomplete">
+          <ul className={styles.autocomplete}>
             {filtered.map((suggestion, index) => {
-              let className
+              let className = 'noActive'
               if (index === active) {
                 className = 'active'
               }
               return (
-                <li className={className} key={suggestion} onClick={onClick}>
+                <li
+                  className={styles[className]}
+                  key={suggestion}
+                  onClick={onClick}
+                >
                   {suggestion}
                 </li>
               )
@@ -72,18 +77,25 @@ const Autocomplete = (props: { suggestions: string[] }) => {
     }
     return <></>
   }
-
   return (
-    <>
-      <input
-        type="text"
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-        value={input}
-      />
-      <input type="submit" />
+    <section className={styles.section}>
+      <div className={styles.inputContainer}>
+        <input
+          type="text"
+          onChange={onChange}
+          onKeyDown={onKeyDown}
+          value={input}
+          className={styles.inputText}
+        />
+        <div
+          className={styles.magnifyingGlassContainer}
+          onClick={() => console.log(1)}
+        >
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </div>
+      </div>
       {renderAutocomplete()}
-    </>
+    </section>
   )
 }
-export default Autocomplete
+export default SearchForm

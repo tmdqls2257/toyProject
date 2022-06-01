@@ -1,0 +1,53 @@
+$inputTextWidth: 500px;
+$inputTextHeight: 48px;
+
+.inputText {
+  width: $inputTextWidth;
+  height: $inputTextHeight;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  outline: none;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+.inputText:focus {
+  border-color: dodgerBlue;
+  box-shadow: 0 0 8px 0 dodgerBlue;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.magnifyingGlassContainer {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+@mixin list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+.active {
+  @include list;
+  height: $inputTextHeight;
+}
+.noActive {
+  @include list;
+  height: $inputTextHeight;
+}
+.autocomplete {
+  padding: 0;
+  margin: 0;
+  width: $inputTextWidth;
+
+  background-color: aliceblue;
+}

@@ -1,13 +1,24 @@
 import type { NextPage } from 'next'
+import Link from 'next/link'
 import Autocomplete from '../components/autocomplete'
+import Button from '../components/button'
+import SearchForm from '../components/header/searchForm'
 import styles from '../css/test.module.css'
 
 const Home: NextPage = () => {
+  const buttonClick = () => {
+    console.log(1)
+  }
   return (
     <div className={styles.container}>
+      <div>
+        <Link href={`/posts/[id]`} as={`/posts/1`}>
+          <a>포스트 상세 페이지</a>
+        </Link>
+      </div>
       <form action="" autoComplete="off">
         <div className={styles.autocomplete}>
-          <Autocomplete
+          <SearchForm
             suggestions={[
               'Alabama',
               'Alaska',
@@ -70,6 +81,9 @@ const Home: NextPage = () => {
               'Wyoming',
             ]}
           />
+          <Button className={'signIn'} onClick={buttonClick}>
+            signIn
+          </Button>
         </div>
       </form>
     </div>
