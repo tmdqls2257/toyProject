@@ -1,11 +1,17 @@
 .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .autocomplete {
   position: relative;
   display: inline-block;
 }
+
 .inputCountry,
 .submit {
   border: 1px solid transparent;
@@ -13,15 +19,18 @@
   padding: 10px;
   font-size: 16px;
 }
+
 .inputCountry {
   background-color: #f1f1f1;
   width: 100%;
   height: 46px;
 }
+
 .submit {
   background-color: DodgerBlue;
   color: #fff;
 }
+
 .infinite {
   height: 500px;
   overflow: scroll;

@@ -3,7 +3,9 @@ import Link from 'next/link'
 import Autocomplete from '../components/autocomplete'
 import Button from '../components/button'
 import SearchForm from '../components/header/searchForm'
-import styles from '../css/test.module.css'
+import InfiniteScroll from '../components/infiniteScroll/infiniteScroll'
+
+import styles from '../scss/test.module.css'
 
 const Home: NextPage = () => {
   const buttonClick = () => {
@@ -84,6 +86,9 @@ const Home: NextPage = () => {
           <Button className={'signIn'} onClick={buttonClick}>
             signIn
           </Button>
+          <div className={styles.infinite}>
+            <InfiniteScroll />
+          </div>
         </div>
       </form>
     </div>
